@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>All HTML Tags</title>
+        <meta name="description" content="Social Media project">
+        <meta name="keywords" content="HTML, CSS, XML, JavaScript">
+        <meta name="author" content="Conary">
+        <meta name="viewport" content="width-device-width, initial-scale-1.0">
+        <link href="https://fonts.googleapis.com/css?family=Charm" rel="stylesheet">
+        <style>
+            .menu{
+                color:chartreuse;
+            }
+            .menu-with-links{
+                color:slateblue;
+            }
+            #body{
+                background: plum;
+            }
+        </style>
+
+    </head>
+    <body>
+            <script
+            src="https://code.jquery.com/jquery-2.2.4.min.js"
+            integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+            crossorigin="anonymous"></script>
+            <script>
+                $(document).ready(function(){
+                    $('h1').click(function(){
+                        console.log('I Clicked on the h1 tag')
+                    })
+                })
+            </script>
+        <h1>The Page</h1>
+        <h2>The Page</h2>
+        <h3>The Page</h3>
+        <h4>The Page</h4>
+        <h5>The Page</h5>
+        <h6>The Page</h6>
+        <p style="font-family: 'Charm', cursive; text-transform:uppercase">Learn Necessary Skills from <strong>Disney TV</strong>, <strong>Dreamworks</strong>, and <strong>Nickelodeon’s Top Artists</strong>
+           this Winter. It’s <span style="color:deeppink">no overstatement</span> to say that <em>character</em> and <em>creature design</em> is one of the most exciting, 
+           creative, and celebrated artistic...</p>
+            <span>
+                           <img src="3women.jpg" alt="Art showing three beautiful women"/>
+            </span>
+           </ul>
+           <header style="background: red; height: 100px; padding: 20px;">
+               <nav style= "background: white; height: 100px;">
+                    Menu
+               </nav>
+           </header>
+           <div style="background: lightblue; height: 500px;">Content Area<br/>
+               <a href="http://www.conceptartworld.com" target="new">Get Inspired!</a><br/>
+               <table>
+                   <tr>
+                       <th>Artist</th>
+                       <th>Specialty</th>
+                       <th>Company</th>
+                   </tr>
+                 <tr>
+                    <td>Luis Royo</td>
+                    <td>Fantasy Art</td>
+                    <td>Independant</td>
+                 </tr>
+                 <tr>
+                    <td>Maciej Kuciera</td>
+                    <td>Concept Art</td>
+                    <td>CD Project Red</td>
+                 </tr>
+               </table>
+               <form action="/register.php" method="POST">
+                <div>
+                   <label>Email</label>
+                   <input type="email" name="email" placeholder="name@whomever.com" required><!--default-->
+                </div>
+                <div>
+                   <label>First Name</label>
+                   <input type="text" name="fname" placeholder="first" required>
+                </div>
+                <div>
+                   <label>Last Name</label>
+                   <input type="text" name="lname" placeholder="last" required value="">
+                </div>
+                <div>
+                <select name="gender">
+                    <option value="male">
+                        Male
+                    </option>
+                    <option value="female" selected>
+                        Female
+                    </option>
+                </select>
+                </div>
+                <div>
+                    <label>Experience</label>
+                    <input type="radio" name="experience" value="beginner" checked>Beginner<!--default-->
+                    <input type="radio" name="experience" value="intermediate">Intermediate
+                    <input type="radio" name="experience" value="advanced">Advanced
+                </div>
+                <div>
+                    <label>Description</label>
+                    <textarea rows="20" cols="30" name="description"></textarea>
+                </div>
+                <div>
+                   <input type="submit" value="SUBMIT">
+                </div>
+               </form>
+           </div>
+           <div>
+               <ul class="menu menu-with-links">
+                   <li>
+                       <a href="#intro">Intro</a> 
+                   </li>
+                   <li>
+                       <a href="#body">Body</a>
+                   </li>
+                   <li>
+                       <a href="#conclusion">Conclusion</a>
+                   </li>
+               </ul>
+               <p id="intro">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ornare aenean euismod elementum nisi quis eleifend. Lorem dolor sed viverra ipsum nunc aliquet bibendum. 
+                    Elementum integer enim neque volutpat ac tincidunt. Viverra nam libero justo laoreet sit. 
+                    Morbi tincidunt augue interdum velit euismod. 
+                    Imperdiet sed euismod nisi porta lorem mollis aliquam. 
+                    Ipsum dolor sit amet consectetur adipiscing elit. Sit amet mauris commodo quis imperdiet massa tincidunt nunc. 
+                    Ultricies lacus sed turpis tincidunt id aliquet risus feugiat in. 
+                    Eu lobortis elementum nibh tellus molestie nunc non. 
+                    Volutpat ac tincidunt vitae semper. Donec pretium vulputate sapien nec sagittis. Non enim praesent elementum facilisis leo. Urna condimentum mattis pellentesque id nibh tortor id aliquet. 
+                    Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam.
+               </p>
+               <p id="body">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ornare aenean euismod elementum nisi quis eleifend. Lorem dolor sed viverra ipsum nunc aliquet bibendum. 
+                    Elementum integer enim neque volutpat ac tincidunt. Viverra nam libero justo laoreet sit. 
+                    Morbi tincidunt augue interdum velit euismod. 
+                    Imperdiet sed euismod nisi porta lorem mollis aliquam. 
+                    Ipsum dolor sit amet consectetur adipiscing elit. Sit amet mauris commodo quis imperdiet massa tincidunt nunc. 
+                    Ultricies lacus sed turpis tincidunt id aliquet risus feugiat in. 
+                    Eu lobortis elementum nibh tellus molestie nunc non. 
+                    Volutpat ac tincidunt vitae semper. Donec pretium vulputate sapien nec sagittis. Non enim praesent elementum facilisis leo. Urna condimentum mattis pellentesque id nibh tortor id aliquet. 
+                    Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam.
+               </p>
+               <p id="conclusion">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ornare aenean euismod elementum nisi quis eleifend. Lorem dolor sed viverra ipsum nunc aliquet bibendum. 
+                    Elementum integer enim neque volutpat ac tincidunt. Viverra nam libero justo laoreet sit. 
+                    Morbi tincidunt augue interdum velit euismod. 
+                    Imperdiet sed euismod nisi porta lorem mollis aliquam. 
+                    Ipsum dolor sit amet consectetur adipiscing elit. Sit amet mauris commodo quis imperdiet massa tincidunt nunc. 
+                    Ultricies lacus sed turpis tincidunt id aliquet risus feugiat in. 
+                    Eu lobortis elementum nibh tellus molestie nunc non. 
+                    Volutpat ac tincidunt vitae semper. Donec pretium vulputate sapien nec sagittis. Non enim praesent elementum facilisis leo. Urna condimentum mattis pellentesque id nibh tortor id aliquet. 
+                    Egestas tellus rutrum tellus pellentesque eu tincidunt tortor aliquam.
+               </p>
+           </div>
+           <footer style="background: yellow; height: 300px;">
+               copyright info
+           </footer>
+
+
+    </body>
+</html>

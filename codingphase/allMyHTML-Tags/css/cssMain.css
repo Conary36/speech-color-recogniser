@@ -1,0 +1,19 @@
+h1{
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    font-size: 2.5em;
+    text-transform: capitalize;
+}
+h4{
+    text-align: center;
+    text-transform: uppercase;
+}
+p{
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.5;
+    margin: 0 auto;
+    width: 500px;
+    text-align: justify;
+    text-decoration: none;
+}
