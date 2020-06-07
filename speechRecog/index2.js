@@ -1,4 +1,4 @@
-const exampleCount = 20;
+const exampleCount = 2;
 
 async function collectSounds(recognizer, name, count){
     for(let i = 0; i < count; i++){
@@ -9,15 +9,23 @@ async function collectSounds(recognizer, name, count){
 
 
 
-async function speech() {
-    let baseRecognizer = speechCommands.create('BROWSER_FFT');
-    console.log("Model Loaded....");
-    await baseRecognizer.ensureModelLoaded();
-    console.log("Creating Transfer recognizer....");
-    const transferRecognizer = baseRecognizer.createTransfer('helper');
+function download(transferRecognizer) {
+   
+    const artifacts = transferRecognizer.serializeExamples();
+
+    // Trigger downloading of the data .bin file.
+    const anchor = document.createElement('a');
+    anchor.download = `blazing.bin`;
+    anchor.href = window.URL.createObjectURL(
+        new Blob([artifacts], { type: 'application/octet-stream' }));
+    anchor.click();
+};
+
+
+async function createTrainModel(transferRecognizer){
     await collectSounds(transferRecognizer, "OK Finder", exampleCount)
-    await collectSounds(transferRecognizer, "Hey Brave", exampleCount)
-    await collectSounds(transferRecognizer, "Open Search", exampleCount)
+    //await collectSounds(transferRecognizer, "Hey Brave", exampleCount)
+    //await collectSounds(transferRecognizer, "Open Search", exampleCount)
     await collectSounds(transferRecognizer, "_background_noise_", exampleCount)
     console.log("Finished...");
 
@@ -31,11 +39,31 @@ async function speech() {
     await transferRecognizer.train({
         epochs: 25,
         callback: {
-            onEpochEnd: async (epoch, logs) =>{
+            onEpochEnd: async (epoch, logs) => {
                 console.log(`Epoch ${epoch}: loss=${logs.loss}, accuracy=${logs.acc}`)
             }
         }
     });
+}
+
+async function loadModel(transferRecognizer){
+
+}
+
+
+async function speech() {
+    let baseRecognizer = speechCommands.create('BROWSER_FFT');
+    console.log("Model Loaded....");
+    await baseRecognizer.ensureModelLoaded();
+
+    console.log("Creating Transfer recognizer....");
+    const transferRecognizer = baseRecognizer.createTransfer('helper');
+    await loadModel(transferRecognizer);
+   
+    
+
+    // console.log("Downloading...")
+    // download(transferRecognizer);
 
     // After the transfer learning completes, you can start online streaming
     // recognition using the new model.
@@ -57,6 +85,8 @@ async function speech() {
         //}
         console.log("------------------------------------------------------")
     }, { probabilityThreshold: 0.75 });
+
+   
 
     // Stop the recognition in 10 seconds.
     setTimeout(() => transferRecognizer.stopListening(), 20e3);
