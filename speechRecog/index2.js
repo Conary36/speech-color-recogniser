@@ -16,40 +16,57 @@ function download(transferRecognizer) {
 
     // Trigger downloading of the data .bin file.
     const anchor = document.createElement('a');
-    anchor.download = `voyager.pages`;
+    anchor.download = `voyager.bin`;
     anchor.href = window.URL.createObjectURL(
         new Blob([artifacts], { type: 'application/octet-stream' }));
     anchor.click();
 };
 
 
-// async function createTrainModel(transferRecognizer){
-//     await collectSounds(transferRecognizer, "OK Finder", exampleCount)
-//     //await collectSounds(transferRecognizer, "Hey Brave", exampleCount)
-//     //await collectSounds(transferRecognizer, "Open Search", exampleCount)
-//     await collectSounds(transferRecognizer, "_background_noise_", exampleCount)
-//     console.log("Finished...");
+async function createTrainModel(transferRecognizer){
+    await collectSounds(transferRecognizer, "OK Finder", exampleCount)
+    //await collectSounds(transferRecognizer, "Hey Brave", exampleCount)
+    //await collectSounds(transferRecognizer, "Open Search", exampleCount)
+    await collectSounds(transferRecognizer, "_background_noise_", exampleCount)
+    console.log("Finished...");
 
-//     console.log(transferRecognizer.countExamples());
+    console.log(transferRecognizer.countExamples());
 
-//     // Start training of the transfer-learning model.
-//     // You can specify `epochs` (number of training epochs) and `callback`
-//     // (the Model.fit callback to use during training), among other configuration
-//     // fields.
-//     console.log("Training....")
-//     await transferRecognizer.train({
-//         epochs: 25,
-//         callback: {
-//             onEpochEnd: async (epoch, logs) => {
-//                 console.log(`Epoch ${epoch}: loss=${logs.loss}, accuracy=${logs.acc}`)
-//             }
-//         }
-//     });
-
-
-// }
+    // Start training of the transfer-learning model.
+    // You can specify `epochs` (number of training epochs) and `callback`
+    // (the Model.fit callback to use during training), among other configuration
+    // fields.
+    console.log("Training....")
+    await transferRecognizer.train({
+        epochs: 25,
+        callback: {
+            onEpochEnd: async (epoch, logs) => {
+                console.log(`Epoch ${epoch}: loss=${logs.loss}, accuracy=${logs.acc}`)
+            }
+        }
+    });
 
 
+}
+
+async function loadModel(transferRecognizer){
+
+    let xhr = new XMLHttpRequest();
+    xhr.open('GET', 'http://127.0.0.1:5500/voyager.bin');
+    xhr.send(null)
+    xhr.onreadystatechange = function () {
+        var DONE = 4; // readyState 4 means the request is done.
+        var OK = 200; // status 200 is a successful return.
+        if (xhr.readyState === DONE) {
+            if (xhr.status === OK) {
+                console.log(xhr.responseText); // 'This is the returned text.'
+            } else {
+                console.log('Error: ' + xhr.status); // An error occurred during the request.
+            }
+        }
+    };
+
+}
 
 
 
@@ -77,8 +94,9 @@ async function speech() {
             }
         }
     });
-    console.log("Downloading....");
-    download(transferRecognizer)
+    await loadModel(transferRecognizer)
+    // console.log("Downloading....");
+    // download(transferRecognizer)
 
     
     console.log("Listening....");
