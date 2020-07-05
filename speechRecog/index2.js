@@ -51,6 +51,16 @@ async function createTrainModel(transferRecognizer){
 
 async function loadModel(transferRecognizer){
 
+    const response = await fetch('http://127.0.0.1:5500/voyager.bin');
+    const buffer = await response.arrayBuffer();
+    transferRecognizer.loadExamples(buffer, true);
+    debugger;
+
+    console.log(JSON.stringify(myJson));
+
+
+
+
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://127.0.0.1:5500/voyager.bin');
     xhr.send(null)
