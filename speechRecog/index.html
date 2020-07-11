@@ -15,38 +15,9 @@
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
         <div id="wrapper">
-            <span id="unsupported" class="support hidden">Speech API Not Supported</span>
-            <h2>Your Message:</h2>
-            <div id="typeOfInput">
-                <span>Results:</span>
-                    <label>
-                        <input type=radio name=recognition-type value=final> 
-                        Final speech
-                    </label>
-
-                    <label>
-                        <input type=radio name=recognition-type value=interim checked>
-                         As you speak
-                    </label>
-             </div>
-
-                    <textarea id="transcription" readonly></textarea>
-                    <br />
-                    <button id="clear-all" class="button">
-                        Clear Text
-                    </button>
-
-                    <div class="button-wrapper">
-                        <div id="speechButton" class="start"></div>
-                    </div>
-                    <div id="log">
-                        Click to start speaking
-                    </div>
+            <img class="xplorer" src="images/xplorer.png"/>
         </div>
-                    <h1>Product Reviews</h1>
-                    <div id="reviews"></div>
-                    <button id="submit" class="button">Submit Review</button>
-
+                    
         <button id="left" onmousedown="collect(0)" onmouseup="collect(null)">Left</button>
         <button id="right" onmousedown="collect(1)" onmouseup="collect(null)">Right</button>
         <button id="noise" onmousedown="collect(2)" onmouseup="collect(null)">Noise</button>

@@ -59,8 +59,6 @@ async function loadModel(transferRecognizer){
     console.log(JSON.stringify(myJson));
 
 
-
-
     let xhr = new XMLHttpRequest();
     xhr.open('GET', 'http://127.0.0.1:5500/voyager.bin');
     xhr.send(null)
