@@ -1,3 +1,59 @@
+import WaveformData from "waveform-data";
+import * as d3 from "d3";
+///////////////////////////////////////////////////////
+const waveform = WaveformData.create(raw_data);
+const channel = waveform.channel(0);
+const layout = d3.select(this).select("svg");
+const x = d3.scale.linear();
+const y = d3.scale.linear();
+const offsetX = 100;
+
+const min = channel.min_array();
+const max = channel.max_array();
+
+x.domain([0, waveform.length]).rangeRound([0, 1024]);
+y.domain([d3.min(min), d3.max(max)]).rangeRound([offsetX, -offsetX]);
+
+const area = d3.svg
+  .area()
+  .x((d, i) => x(i))
+  .y0((d, i) => y(min[i]))
+  .y1((d, i) => y(d));
+
+graph
+  .select("path")
+  .datum(max)
+  .attr("transform", () => `translate(0, ${offsetX})`)
+  .attr("d", area);
+/////////////////////////////////////////////////////////////
+
+////////////////////////////////////////////////////////
+    const audioContext = new AudioContext();
+
+    audioContext
+      .decodeAudioData(arrayBuffer)
+      .then((audioBuffer) => {
+        const options = {
+          audio_context: audioContext,
+          audio_buffer: audioBuffer,
+          scale: 128,
+        };
+
+        return new Promise((resolve, reject) => {
+          WaveformData.createFromAudio(options, (err, waveform) => {
+            if (err) {
+              reject(err);
+            } else {
+              resolve(waveform);
+            }
+          });
+        });
+      })
+      .then((waveform) => {
+        console.log(`Waveform has ${waveform.channels} channels`);
+        console.log(`Waveform has length ${waveform.length} points`);
+      });
+////////////////////////////////////////////////////////////////////
 
 const exampleCount = 2;
 
@@ -54,9 +110,9 @@ async function loadModel(transferRecognizer){
     const response = await fetch('http://127.0.0.1:5500/voyager.bin');
     const buffer = await response.arrayBuffer();
     transferRecognizer.loadExamples(buffer, true);
-    debugger;
 
-    console.log(JSON.stringify(myJson));
+
+    //console.log(JSON.stringify(myJson));
 
 
     let xhr = new XMLHttpRequest();
